@@ -45,7 +45,7 @@ do
 		# Check params
 		if [ ! -f u20-dockerfile ]; then
 		    echo ": The u20-dockerfile file is not found."
-		    echo ": * Did you execute git clone https://github.com/acaldero/u18-docker.git?."
+		    echo ": * Did you execute git clone https://github.com/acaldero/u20-docker.git?."
 		    echo ""
 		    exit
 		fi
@@ -58,10 +58,10 @@ do
 		shift
 
 		echo "Building containers..."
-		docker-compose -f u20-dockercompose.yml up -d --scale ssdd=$1
+		docker-compose -f u20-dockercompose.yml up -d --scale node=$1
 		if [ $? -gt 0 ]; then
 		    echo ": The docker-compose command failed to spin up containers."
-		    echo ": * Did you execute git clone https://github.com/acaldero/u18-docker.git?."
+		    echo ": * Did you execute git clone https://github.com/acaldero/u20-docker.git?."
 		    echo ""
 		    exit
 		fi
@@ -92,7 +92,7 @@ do
 		docker-compose -f u20-dockercompose.yml down
 		if [ $? -gt 0 ]; then
 		    echo ": The docker-compose command failed to stop containers."
-		    echo ": * Did you execute git clone https://github.com/acaldero/u18-docker.git?."
+		    echo ": * Did you execute git clone https://github.com/acaldero/u20-docker.git?."
 		    echo ""
 		    exit
 		fi
