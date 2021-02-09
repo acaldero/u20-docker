@@ -58,7 +58,7 @@ do
 		shift
 
 		echo "Building containers..."
-		docker-compose -f u20-dockercompose.yml up -d --scale node=$1
+		docker-compose -f u20-dockercompose.yml up -d --scale ssdd=$1
 		if [ $? -gt 0 ]; then
 		    echo ": The docker-compose command failed to spin up containers."
 		    echo ": * Did you execute git clone https://github.com/acaldero/u18-docker.git?."

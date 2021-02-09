@@ -6,7 +6,7 @@ networks:
     driver: bridge
 
 services:
-  node:
+  ssdd:
     build:
       context: ./
       dockerfile: ./u20-dockerfile
