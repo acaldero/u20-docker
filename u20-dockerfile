@@ -36,6 +36,8 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-change-held-
         libtool \
 	net-tools \
 	mosquitto \
+        openjdk-14-jdk-headless \
+	gsoap \
         && \
     apt-get clean
 
