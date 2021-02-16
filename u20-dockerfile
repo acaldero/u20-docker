@@ -72,15 +72,13 @@ RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 # Initial env
 RUN echo 'root:ssdd' | chpasswd
 
-
 RUN mkdir -p /work
 WORKDIR "/work"
 
-
-# run this on container start-up
-# CMD "/usr/sbin/service rpcbind start"
+# container start-up
+RUN mkdir -p /srv
+COPY u20-dockerstart.sh /srv
 
 EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
-
+CMD ["/srv/u20-dockerstart.sh"]
 
