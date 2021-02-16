@@ -10,31 +10,38 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-change-held-
         sudo \
         zip \
         unzip \
-        inetutils-ping \
-        nmap \
-        netcat \
-        net-tools \
-        vim \
-        curl \
-        wget \
-        build-essential \
-        cmake \
-        g++ \
-        git \
+        zlib1g-dev \
         ca-certificates \
-        libcurl3-dev \
-	libjson-c-dev \
         pkg-config \
         rsync \
         software-properties-common \
         gpg-agent \
+        vim \
+        curl \
+        libcurl3-dev \
+        wget \
+        \
+        build-essential \
+        cmake \
+        g++ \
+        git \
+        man-db \
         doxygen \
         valgrind \
-        zlib1g-dev \
         autoconf \
         strace \
+        \
+        inetutils-ping \
+        nmap \
+        netcat \
+        net-tools \
+        hping3 \
+        iftop \
+        lsof \
+        \
+        \
         libtool \
-	net-tools \
+	libjson-c-dev \
 	rpcbind \
 	openjdk-8-jdk \
         && \
