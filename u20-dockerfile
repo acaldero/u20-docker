@@ -35,9 +35,8 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-change-held-
         strace \
         libtool \
 	net-tools \
-	mosquitto \
-        openjdk-14-jdk-headless \
-	gsoap \
+	rpcbind \
+	openjdk-8-jdk \
         && \
     apt-get clean
 
@@ -66,8 +65,15 @@ RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 # Initial env
 RUN echo 'root:ssdd' | chpasswd
 
+
 RUN mkdir -p /work
 WORKDIR "/work"
 
+
+# run this on container start-up
+# CMD "/usr/sbin/service rpcbind start"
+
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
+
+
