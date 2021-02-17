@@ -1,17 +1,17 @@
-# Ubuntu 20.04 LTS in Docker (v1.2)
+# Ubuntu 20.04 LTS in Docker (v1.3)
 
 1 How to install:
   * git clone https://github.com/acaldero/u20-docker.git
   * cd u20-docker
 
 2 How to use it:
-  * First time (and each time u20-dockerfile is update) please execute:
+  * First time + "each time u20-dockerfile is updated", please execute:
     * ./u20.sh build
 
-  * For a typical work session with 3 containers, please execute:
-    *  ./u20.sh start 3
-    *  ./u20.sh bash 2
-    *  <do some work inside container 2 at /work directory>
+  * For a typical work session with **3** containers, please execute:
+    *  ./u20.sh start **3**
+    *  ./u20.sh bash **2**
+    *  <do some work inside container **2** at /work directory>
     *  exit
     *  ./u20.sh stop
 

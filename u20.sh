@@ -34,8 +34,24 @@ fi
 
 
 #
+# check docker
+#
+
+docker -v >& /dev/null
+status=$?
+if [ $status -ne 0 ]; then
+     echo ": docker is not found in this computer."
+     echo ": * Did you install docker?."
+     echo ":   Please visit https://docs.docker.com/get-docker/"
+     echo ""
+     exit
+fi
+
+
+#
 # for each argument, try to execute it
 #
+
 
 while (( "$#" ))
 do
@@ -118,7 +134,7 @@ do
 
 	     help)
 		echo ""
-		echo "  Ubuntu 20.04 on docker (v1.2) "
+		echo "  Ubuntu 20.04 on docker (v1.3) "
 		echo " -------------------------------"
 		echo ""
 		echo "  Usage: $0 <action> [<number>]"

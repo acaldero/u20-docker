@@ -1,4 +1,25 @@
 #!/bin/bash
+#set -x
+
+#
+#  Copyright 2019-2021 Saul Alonso Monsalve, Felix Garcia Carballeira, Jose Rivadeneira Lopez-Bravo, Alejandro Calderon Mateos,
+#
+#  This file is part of U20 proyect.
+#
+#  U20 is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU Lesser General Public License as published by
+#  the Free Software Foundation, either version 3 of the License, or
+#  (at your option) any later version.
+#
+#  U20 is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU Lesser General Public License for more details.
+#
+#  You should have received a copy of the GNU Lesser General Public License
+#  along with U20.  If not, see <http://www.gnu.org/licenses/>.
+#
+
 
 # Start RPCbind
 /usr/sbin/service rpcbind start
