@@ -24,14 +24,19 @@ cd u20-docker
   <td>
 </html>
 
-  * First time + "each time u20-dockerfile is updated", please execute:
+  * First time + "each time u20-dockerfile is updated":
     * ./u20.sh build
 
-  * For a work session with **3** containers, please execute:
+  * To start **3** containers:
     *  ./u20.sh start **3**
+
+  * To get into container **2**:
     *  ./u20.sh bash **2**
-    *  <do some work inside container **2** at /work directory>
+
+  * Being within **2**, to exit:
     *  exit
+
+  * To stop the containers:
     *  ./u20.sh stop
 
   * Available options for debugging:
