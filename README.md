@@ -7,16 +7,16 @@
   <th>(2) How to use it</th>
   </tr>
   <tr>
-  <td>
+  <td width="55%">
 </html>
 
-1 IF you need to install Docker:
-  * On Linux Ubuntu: (Thanks to Erik de la Cruz Trujillo) "install using the repository" from
-    * https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+* IF you need to install Docker THEN:
+  * On Linux Ubuntu:
+    * (Thanks to Erik de la Cruz Trujillo) "install using the repository" from https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
   * On Windows 10 version 20H2:
     * https://docs.docker.com/docker-for-windows/wsl/
 
-2 To get u20-docker:
+* To get u20-docker:
   * With git:
     * git clone https://github.com/acaldero/u20-docker.git
     * cd u20-docker
@@ -43,7 +43,6 @@
   * Available options for debugging:
     *  ./u20.sh status
     *  ./u20.sh network
-    *  ./u20.sh cleanup
 
 <html>
   </td>
@@ -54,5 +53,4 @@
 **Beware of**:
   * Any modification outside /work will be discarded on container stopping.
   * Please make a backup of your work "frequently".
-
 
