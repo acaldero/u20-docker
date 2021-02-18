@@ -78,3 +78,4 @@ cd u20-docker
 **Please beware of**:
   * Any modification outside /work will be discarded on container stopping.
   * Please make a backup of your work "frequently".
+  * You might need to use "sudo" before ./u20.sh if your user doesn't belong to the docker group (could be solved by using "sudo usermod -aG docker ${USER}")
