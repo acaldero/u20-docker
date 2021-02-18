@@ -1,7 +1,13 @@
-**Install docker and docker-compose on Ubuntu 20.04**
+# Get docker and docker-compose
 
+## Docker
+
+### Linux
+
+  * Full instructions available on: https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository (Thanks to Erik de la Cruz Trujillo) 
+
+**docker on Ubuntu 20.04**
 ```
-echo "Install docker"
 sudo apt update
 sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -9,8 +15,20 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt update
 sudo apt -y install docker-ce
 sudo usermod -aG docker ${USER}
+```
 
-echo "Install docker-compose"
+### Windows 10 (20H2)
+
+  * Instructions available on: https://docs.docker.com/docker-for-windows/wsl/
+
+
+## Docker-compose
+
+* Full instructions available on: https://docs.docker.com/compose/install/
+
+**docker-compose on Ubuntu 20.04**
+
+```
 sudo curl -L "https://github.com/docker/compose/releases/download/1.28.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
