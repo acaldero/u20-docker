@@ -16,20 +16,23 @@
   <td>
 </html>
 
-  * wget https://github.com/acaldero/u20-docker/archive/main.zip
-  * unzip main.zip
-  * cd u20-docker-main
-  * ./u20.sh build
+```
+wget https://github.com/acaldero/u20-docker/archive/main.zip
+unzip main.zip
+cd u20-docker-main
+./u20.sh build
+```
 
 <html>
   </td>
   <td>
 </html>
 
-  * git clone https://github.com/acaldero/u20-docker.git
-  * 
-  * cd u20-docker
-  * ./u20.sh build
+```
+git clone https://github.com/acaldero/u20-docker.git
+cd u20-docker
+./u20.sh build
+```
 
 <html>
   </td>
