@@ -3,7 +3,8 @@
 ## Docker
 
   * Full Instructions for Windows 10 (20H2) available on: https://docs.docker.com/docker-for-windows/wsl/
-  * Full instructions for Linux available on: https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository (Thanks to Erik de la Cruz Trujillo) 
+  * Full instructions for Linux available on: https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository \
+    (Thanks to Erik de la Cruz Trujillo) 
 
 **docker on Ubuntu 20.04**
 ```
