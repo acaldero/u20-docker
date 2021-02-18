@@ -2,10 +2,7 @@
 
 ## Prerequisites
 
- * Docker
-   * On Linux Ubuntu: https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository (Thanks to Erik de la Cruz Trujillo) 
-   * On Windows 10 version 20H2: https://docs.docker.com/docker-for-windows/wsl/
- * Docker-compose: https://docs.docker.com/compose/install/
+ * [Docker + Docker-compose](./DOCKER.md) 
 
 ## Get u20-docker
 
@@ -16,7 +13,7 @@
   <th>With git</th>
   </tr>
   <tr>
-  <td width="50%">
+  <td>
 </html>
 
   * wget https://github.com/acaldero/u20-docker/archive/main.zip
@@ -30,6 +27,7 @@
 </html>
 
   * git clone https://github.com/acaldero/u20-docker.git
+  * 
   * cd u20-docker
   * ./u20.sh build
 
