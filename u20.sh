@@ -52,7 +52,6 @@ fi
 # for each argument, try to execute it
 #
 
-
 while (( "$#" ))
 do
 	arg_i=$1
@@ -126,6 +125,7 @@ do
 	     ;;
 
 	     cleanup)
+		echo "Removing containers and images..."
                 docker rm      -f $(docker ps     -a -q)
                 docker rmi     -f $(docker images -a -q)
                 docker volume rm  $(docker volume ls -q)
@@ -134,7 +134,7 @@ do
 
 	     help)
 		echo ""
-		echo "  Ubuntu 20.04 on docker (v1.3) "
+		echo "  Ubuntu 20.04 on docker (v1.5) "
 		echo " -------------------------------"
 		echo ""
 		echo "  Usage: $0 <action> [<number>]"
@@ -144,13 +144,16 @@ do
 		echo ""
 		echo "  : For a typical work session, please execute:"
 		echo "       $0 start <number of containers>"
-		echo "       $0 bash <1 ... number of containers>"
-		echo "       ..."
-		echo "       $0 stop"
-		echo ""
-		echo "  : Available options for debugging:"
 		echo "       $0 status"
 		echo "       $0 network"
+		echo ""
+		echo "       $0 bash <container id, from 1 to number_of_containers>"
+		echo "       <some work within container>"
+		echo "       exit"
+		echo ""
+		echo "       $0 stop"
+		echo ""
+		echo "  : Available option to uninstall u20-docker (remove images + containers):"
 		echo "       $0 cleanup"
 		echo ""
 	     ;;
@@ -164,3 +167,4 @@ do
 
 	shift
 done
+
