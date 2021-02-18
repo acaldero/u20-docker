@@ -1,6 +1,22 @@
 # Ubuntu 20.04 LTS in Docker (v1.3)
 
-1 How to install:
+<html>
+ <table>
+  <tr>
+  <th>(1) How to install</th>
+  <th>(2) How to use it</th>
+  </tr>
+  <tr>
+  <td>
+</html>
+
+1 IF you need to install Docker:
+  * On Linux Ubuntu: (Thanks to Erik de la Cruz Trujillo) "install using the repository" from
+    * https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+  * On Windows 10 version 20H2:
+    * https://docs.docker.com/docker-for-windows/wsl/
+
+2 To get u20-docker:
   * With git:
     * git clone https://github.com/acaldero/u20-docker.git
     * cd u20-docker
@@ -9,7 +25,11 @@
     * unzip main.zip
     * cd u20-docker-main
 
-2 How to use it:
+<html>
+  </td>
+  <td>
+</html>
+
   * First time + "each time u20-dockerfile is updated", please execute:
     * ./u20.sh build
 
@@ -25,11 +45,14 @@
     *  ./u20.sh network
     *  ./u20.sh cleanup
 
-3 Beware of:
-  * Work inside /work and make backup "frequently":
-    * Any modification outside /work will be discarded on container stopping.
-    * Please make a backup of your work "frequently".
-  * You need to install Docker first:
-    * On Linux Ubuntu: (Thanks to Erik de la Cruz Trujillo) "install using the repository" from https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
-    * On Windows 10 version 20H2: https://docs.docker.com/docker-for-windows/wsl/
+<html>
+  </td>
+  </tr>
+ </table>
+</html>
+
+**Beware of**:
+  * Any modification outside /work will be discarded on container stopping.
+  * Please make a backup of your work "frequently".
+
 
