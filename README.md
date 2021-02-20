@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
- * [Docker + Docker-compose](./DOCKER.md) 
+ * [Docker + Docker-compose](./doc/DOCKER.md) 
 
 ## Getting u20-docker
 
@@ -74,8 +74,14 @@ cd u20-docker
 </html>
 
 
-
 **Please beware of**:
   * Any modification outside /work will be discarded on container stopping.
   * Please make a backup of your work "frequently".
   * You might need to use "sudo" before ./u20.sh if your user doesn't belong to the docker group (could be solved by using "sudo usermod -aG docker ${USER}")
+
+
+## Example using u20-docker
+
+![Example of using 2 containers in Linux, and using each one with netcat](doc/u20-example1.gif)
+
+
