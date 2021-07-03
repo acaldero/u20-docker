@@ -84,7 +84,7 @@ do
 		fi
 
 		# Container cluster (single node) files...
-		CONTAINER_ID_LIST=$(docker ps -f name=u20 -q)
+		CONTAINER_ID_LIST=$(docker ps -f name=node -q)
 		docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $CONTAINER_ID_LIST > machines
 	     ;;
 
@@ -155,7 +155,7 @@ do
 		shift
 		shift
 
-		CNAME=$(docker ps -f name=u20 -q | head -1)
+		CNAME=$(docker ps -f name=node -q | head -1)
 
 		# Check params
 		if [ "x$CNAME" == "x" ]; then
@@ -188,27 +188,27 @@ do
 		echo "  Usage: $0 <action> [<options>]"
 		echo ""
 		echo "  : First time, and each time u20-dockerfile is update, please execute:"
-		echo "       $0 build"
+		echo "        $0 build"
 		echo ""
-		echo "  : For a typical work session:"
-		echo "    :: First, please start the work session with:"
-		echo "       $0 start <number of containers>"
-		echo "       $0 status"
-		echo "       $0 network"
-		echo "    :: Then you can perform different actions... (see Actions)"
-		echo "    :: Lastly, please stop the work session with:"
-		echo "       $0 stop"
+		echo "  : A typical work session has 3 steps:"
+		echo "    1) First, please start the work session with:"
+		echo "        $0 start <number of containers>"
+		echo "        $0 status"
+		echo "        $0 network"
+		echo "    2) Then you can perform different actions... (see Actions)"
+		echo "    3) Lastly, please stop the work session with:"
+		echo "        $0 stop"
 		echo ""
 		echo "  : Actions:"
-		echo "    :: In order to work with a single container, please execute:"
-		echo "       $0 bash <container id, from 1 to number_of_containers>"
-		echo "       <some work within container>"
-		echo "       exit"
-		echo "    :: In order to work with all containers, please execute:"
-	        echo "       $0 mpirun 2 \"<command>\""
+		echo "    : In order to work with a single container, please execute:"
+		echo "        $0 bash <container id, from 1 to number_of_containers>"
+		echo "        <some work within container>"
+		echo "        exit"
+		echo "    : In order to work with all containers, please execute:"
+	        echo "        $0 mpirun 2 \"<command>\""
 		echo ""
 		echo "  : Available option to uninstall u20-docker (remove images + containers):"
-		echo "       $0 cleanup"
+		echo "        $0 cleanup"
 		echo ""
 	     ;;
 
