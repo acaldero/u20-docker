@@ -65,6 +65,7 @@ do
 		    exit
 		fi
 
+		# Build image
 		echo "Building initial image..."
 		docker image build -t u20 -f u20-dockerfile .
 	     ;;
@@ -72,6 +73,7 @@ do
 	     start)
 		shift
 
+		# Start container cluster (single node)
 		echo "Building containers..."
 		docker-compose -f u20-dockercompose.yml up -d --scale node=$1
 		if [ $? -gt 0 ]; then
@@ -80,10 +82,16 @@ do
 		    echo ""
 		    exit
 		fi
+
+		# Container cluster (single node) files...
+		CONTAINER_ID_LIST=$(docker ps -f name=u20 -q)
+		docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $CONTAINER_ID_LIST > machines
 	     ;;
 
 	     bash)
                 shift
+
+		# Check params
                 CO_ID=$1
 		CO_NC=$(docker ps -f name=node_ -q | wc -l)
                 if [ $CO_ID -lt 1 ]; then
@@ -97,12 +105,14 @@ do
                         continue
                 fi
 
+		# Bash on container...
 		echo "Executing /bin/bash on container $CO_ID..."
 		CO_NAME=$(docker ps -f name=node_ -q | head -$CO_ID | tail -1)
 		docker exec -it $CO_NAME /bin/bash
 	     ;;
 
 	     stop)
+		# Stopping containers
 		echo "Stopping containers..."
 		docker-compose -f u20-dockercompose.yml down
 		if [ $? -gt 0 ]; then
@@ -111,6 +121,9 @@ do
 		    echo ""
 		    exit
 		fi
+
+		# Remove container cluster (single node) files...
+		rm -fr machines
 	     ;;
 
 	     status)
@@ -125,6 +138,7 @@ do
 	     ;;
 
 	     cleanup)
+		# Removing everything (warning) 
 		echo "Removing containers and images..."
                 docker rm      -f $(docker ps     -a -q)
                 docker rmi     -f $(docker images -a -q)
@@ -132,26 +146,66 @@ do
                 docker network rm $(docker network ls|tail -n+2|awk '{if($2 !~ /bridge|none|host/){ print $1 }}')
 	     ;;
 
+	     mpirun)
+		# Get parameters
+		shift
+		NP=$1
+		shift
+		A=$@
+		shift
+		shift
+
+		CNAME=$(docker ps -f name=u20 -q | head -1)
+
+		# Check params
+		if [ "x$CNAME" == "x" ]; then
+		    echo ": There is not a running u20 container."
+		    exit
+		fi
+
+		if [ ! -f machines ]; then
+		    echo ": The machines file was not found."
+		    exit
+		fi
+
+		# U20
+		docker container exec -it $CNAME     \
+		       mpirun -np $NP -machinefile machines \
+			      --oversubscribe \
+			      -bind-to none -map-by slot -verbose --allow-run-as-root \
+			       -x LD_LIBRARY_PATH -x PATH \
+			       -x NCCL_SOCKET_IFNAME=^lo,docker0 \
+			       -mca pml ob1 -mca btl ^openib \
+			       -mca btl_tcp_if_exclude lo,docker0,eth1 \
+			      $A
+	     ;;
+
 	     help)
 		echo ""
-		echo "  Ubuntu 20.04 on docker (v1.5) "
+		echo "  Ubuntu 20.04 on docker (v2.0) "
 		echo " -------------------------------"
 		echo ""
-		echo "  Usage: $0 <action> [<number>]"
+		echo "  Usage: $0 <action> [<options>]"
 		echo ""
-		echo "  : Each time u20-dockerfile is update, please execute:"
+		echo "  : First time, and each time u20-dockerfile is update, please execute:"
 		echo "       $0 build"
 		echo ""
-		echo "  : For a typical work session, please execute:"
+		echo "  : For a typical work session:"
+		echo "    :: First, please start the work session with:"
 		echo "       $0 start <number of containers>"
 		echo "       $0 status"
 		echo "       $0 network"
+		echo "    :: Then you can perform different actions... (see Actions)"
+		echo "    :: Lastly, please stop the work session with:"
+		echo "       $0 stop"
 		echo ""
+		echo "  : Actions:"
+		echo "    :: In order to work with a single container, please execute:"
 		echo "       $0 bash <container id, from 1 to number_of_containers>"
 		echo "       <some work within container>"
 		echo "       exit"
-		echo ""
-		echo "       $0 stop"
+		echo "    :: In order to work with all containers, please execute:"
+	        echo "       $0 mpirun 2 \"<command>\""
 		echo ""
 		echo "  : Available option to uninstall u20-docker (remove images + containers):"
 		echo "       $0 cleanup"

@@ -14,5 +14,15 @@ services:
       - type: bind
         source: .
         target: /work
+      - type: bind
+        source: ./export
+        target: /export
+      - type: bind
+        source: /lib/modules
+        target: /lib/modules
     networks:
       - b0
+    privileged: true
+    cap_add:
+      - ALL
+

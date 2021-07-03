@@ -5,45 +5,42 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install initial software
 RUN apt-get update && apt-get install -y --allow-downgrades --allow-change-held-packages --no-install-recommends \
-        aptitude \
-        apt-utils \
-        sudo \
-        zip \
-        unzip \
-        zlib1g-dev \
-        ca-certificates \
-        pkg-config \
-        rsync \
-        software-properties-common \
-        gpg-agent \
+        aptitude apt-utils \
+        zlib1g-dev ca-certificates pkg-config \
+        software-properties-common gpg-agent \
+        curl libcurl3-dev \
+        wget rsync \
+        sudo lshw \
         vim \
-        curl \
-        libcurl3-dev \
-        wget \
         \
         build-essential \
-        cmake \
-        g++ \
-        git \
-        man-db \
-        doxygen \
-        valgrind \
-        autoconf \
-        strace \
+        autoconf cmake g++ git \
+        gdb valgrind strace \
+        nasm \
+        man-db doxygen \
+        htop lsof \
         \
         inetutils-ping \
-        nmap \
         netcat \
-        net-tools \
-        hping3 \
-        iftop \
-        lsof \
+        nmap net-tools hping3 \
+        iftop nload \
         \
+        kmod \
+        nfs-common nfs-kernel-server \
         \
         libtool \
-	libjson-c-dev \
 	rpcbind \
 	openjdk-8-jdk \
+	libjson-c-dev \
+        jq \
+        \
+        zip unzip rar unrar p7zip-full p7zip-rar \
+        \
+        openmpi-bin openmpi-common openmpi-doc libhdf5-openmpi-dev libopenmpi-dev libadios-openmpi-dev \
+        \
+        yamllint \
+        ubuntu-restricted-extras \
+        imagemagick \
         && \
     apt-get clean
 

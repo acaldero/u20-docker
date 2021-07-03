@@ -2,7 +2,7 @@
 #set -x
 
 #
-#  Copyright 2019-2021 Saul Alonso Monsalve, Felix Garcia Carballeira, Jose Rivadeneira Lopez-Bravo, Alejandro Calderon Mateos,
+#  Copyright 2019-2021 Saul Alonso Monsalve, Diego Camarmas Alonso, Felix Garcia Carballeira, Jose Rivadeneira Lopez-Bravo, Alejandro Calderon Mateos,
 #
 #  This file is part of U20 proyect.
 #
@@ -26,6 +26,16 @@
 status=$?
 if [ $status -ne 0 ]; then
      echo "Failed to start rpcbind: $status"
+fi
+
+# Start NFS-server
+mkdir -p /export/nfs/$(hostname -i)
+echo "/export/nfs/$(hostname -i) $(hostname -i)/28(rw,sync,no_root_squash,no_subtree_check)" > /etc/exports
+
+/usr/sbin/service nfs-kernel-server start
+status=$?
+if [ $status -ne 0 ]; then
+     echo "Failed to start nfs-kernel-server: $status"
 fi
 
 # Start SSHD
