@@ -52,6 +52,8 @@ fi
 # for each argument, try to execute it
 #
 
+DOCKER_PREFIX_NAME=docker-node-
+
 while (( "$#" ))
 do
 	arg_i=$1
@@ -93,7 +95,7 @@ do
 
 		# Check params
                 CO_ID=$1
-		CO_NC=$(docker ps -f name=node_ -q | wc -l)
+		CO_NC=$(docker ps -f name=$DOCKER_PREFIX_NAME -q | wc -l)
                 if [ $CO_ID -lt 1 ]; then
 			echo "ERROR: Container ID $CO_ID out of range (1...$CO_NC)"
                 	shift
@@ -107,7 +109,7 @@ do
 
 		# Bash on container...
 		echo "Executing /bin/bash on container $CO_ID..."
-		CO_NAME=$(docker ps -f name=node_ -q | head -$CO_ID | tail -1)
+		CO_NAME=$(docker ps -f name=$DOCKER_PREFIX_NAME -q | head -$CO_ID | tail -1)
 		docker exec -it $CO_NAME /bin/bash
 	     ;;
 
@@ -133,7 +135,7 @@ do
 
 	     network)
 		echo "Show status of current IPs..."
-		CONTAINER_ID_LIST=$(docker ps -f name=node_ -q)
+		CONTAINER_ID_LIST=$(docker ps -f name=$DOCKER_PREFIX_NAME -q)
 		docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $CONTAINER_ID_LIST
 	     ;;
 
