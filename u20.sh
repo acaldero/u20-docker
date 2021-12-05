@@ -52,7 +52,7 @@ fi
 # for each argument, try to execute it
 #
 
-DOCKER_PREFIX_NAME=docker-node-
+DOCKER_PREFIX_NAME=docker.node.
 
 while (( "$#" ))
 do
