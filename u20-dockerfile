@@ -34,7 +34,7 @@ RUN apt-get update && apt-get install -y --allow-downgrades --allow-change-held-
 	libjson-c-dev \
         jq \
         \
-        zip unzip rar unrar p7zip-full p7zip-rar \
+        zip unzip unrar p7zip-full p7zip-rar \
         \
         libmpich-dev libmpich12 mpich mpich-doc netpipe-mpich2 \
         \
