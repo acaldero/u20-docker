@@ -52,10 +52,11 @@ fi
 # for each argument, try to execute it
 #
 
+ DOCKER_PREFIX_NAME=docker_node
 #DOCKER_PREFIX_NAME=docker.node.
 #DOCKER_PREFIX_NAME=mfs-node
 #DOCKER_PREFIX_NAME=$(basename $(pwd))"-node"
- DOCKER_PREFIX_NAME=$(basename $(pwd))"_node"
+#DOCKER_PREFIX_NAME=$(basename $(pwd))"_node"
 
 while (( "$#" ))
 do
